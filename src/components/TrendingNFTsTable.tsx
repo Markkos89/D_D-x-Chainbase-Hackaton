@@ -3,27 +3,12 @@ import Image from "next/image";
 import { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 
 type Props = {
-  currentChain: number;
+  collectionsDataResponse: TopTrendingNFTsResponse;
 };
 
-async function getTopTrendingNFTs(currentChain: number) {
-  const options = {
-    method: "GET",
-    headers: { accept: "application/json", "x-api-key": "demo" },
-  };
-  const res = await fetch(
-    `https://api.chainbase.online/v1/nft/collection/trending?chain_id=${currentChain}&range=7d&exchange_name=all&sort=volume_desc&page=1&limit=20`,
-    options
-  );
-  const trendingNFTs = await res.json();
-  return trendingNFTs;
-}
-
-export default async function TrendingNFTsTable({ currentChain }: Props) {
-  const trendingNFTs: TopTrendingNFTsResponse = await getTopTrendingNFTs(
-    currentChain
-  );
-
+export default async function TrendingNFTsTable({
+  collectionsDataResponse,
+}: Props) {
   return (
     <>
       <div className="flex flex-col">
@@ -104,8 +89,10 @@ export default async function TrendingNFTsTable({ currentChain }: Props) {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                  {trendingNFTs?.data?.length
-                    ? trendingNFTs?.data?.map((nftData, idx) => (
+                  {collectionsDataResponse !== undefined &&
+                  collectionsDataResponse?.data &&
+                  collectionsDataResponse.data?.length > 0
+                    ? collectionsDataResponse?.data?.map((nftData, idx) => (
                         <tr key={idx}>
                           <td className="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                             <div className="inline-flex items-center gap-x-3">
@@ -152,6 +139,7 @@ export default async function TrendingNFTsTable({ currentChain }: Props) {
                         </tr>
                       ))
                     : null}
+                  {/* Here, instead of showing a null value we will show a loading SPINNER */}
                 </tbody>
               </table>
             </div>
