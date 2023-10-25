@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import Searchbar from "@/components/Searchbar";
 import ChainsListTab from "@/components/ChainsListTab";
-import TrendingNFTsTable from "@/components/TrendingNFTsTable";
 import { useEffect, useState } from "react";
 import { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 import Image from "next/image";
@@ -18,6 +17,7 @@ export default function Home() {
       next_page: 2,
       count: 20,
     });
+  const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   useEffect(() => {
     async function getTopTrendingNFTs() {
@@ -38,9 +38,18 @@ export default function Home() {
     getTopTrendingNFTs();
   }, [currentChain]);
 
+  useEffect(() => {
+    if (searchInputValue === "") return;
+    if (searchInputValue.startsWith("0x")) {
+    }
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14">
-      <Searchbar />
+      <Searchbar
+        searchInputValue={searchInputValue}
+        handleSearchInputValue={setSearchInputValue}
+      />
       <section className="container mx-auto">
         <ChainsListTab
           selectedChainId={currentChain}
