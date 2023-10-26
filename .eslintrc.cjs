@@ -33,6 +33,7 @@ const config = {
     "@typescript-eslint/no-unsafe-call": 0, // or "off" if you want to disable it
     "@typescript-eslint/no-unsafe-return": 0,
     "@typescript-eslint/no-unsafe-member-access": 0,
+    "@typescript-eslint/no-explicit-any": "off",
   },
 };
 
