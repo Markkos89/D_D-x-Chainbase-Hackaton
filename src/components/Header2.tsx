@@ -1,6 +1,10 @@
 import React from 'react'
 import Image from 'next/image';
 import NftCard from './NftCards';
+import Charts from './Charts';
+import ChartBarra from './ChartBarra';
+import ChartLineal from './ChartLineal';
+import ChartDonuts from './ChartDonuts';
 
 export const Header2 = () => {
     return (
@@ -17,11 +21,11 @@ export const Header2 = () => {
                     <Image
                         src="/Dao-perfil.png"
                         alt="User"
-                        
+
                         width={150}
                         border-width={2}
                         height={10}
-                        border-radius={0.5 }
+                        border-radius={0.5}
                         className="rounded-md"
                     />
                 </div>
@@ -33,7 +37,7 @@ export const Header2 = () => {
                     <a href="https://etherscan.io/name-lookup-search?id=devdao.eth" target="_blank">
                         <h2 className="text-2xl ml-4 font-bold ">Devs for Revolution</h2>
                     </a>
-                
+
                 </div>
 
 
@@ -65,44 +69,44 @@ export const Header2 = () => {
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <p className="text-2xl font-bold text-navy-700 dark:text-white">
-                            0,0171 ETH
+                                0,0171 ETH
                             </p>
                             <p className="text-sm font-normal text-white-600">floor price</p>
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <p className="text-2xl font-bold text-navy-700 dark:text-white">
-                            0,0083 WETH
+                                0,0083 WETH
                             </p>
                             <p className="text-sm font-normal text-white-600">best offer</p>
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <p className="text-2xl font-bold text-navy-700 dark:text-white">
-                            0,5%
+                                0,5%
                             </p>
                             <p className="text-sm font-normal text-white-600">listed</p>
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <p className="text-2xl font-bold text-navy-700 dark:text-white">
-                           6463
+                                6463
                             </p>
                             <p className="text-sm font-normal text-white-600">owners</p>
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <p className="text-2xl font-bold text-navy-700 dark:text-white">
-                            82%
+                                82%
                             </p>
                             <p className="text-sm font-normal text-white-600">unique owners</p>
                         </div>
                     </div>
                 </div>
-                
-                
+
+
 
                 <hr></hr>
 
 
                 <div className="flex mx-auto  px-5 items-center w-full  h-30">
-                    
+
                     <div className="bg-white rounded-full flex border-none p-3 mb-4 shadow-md w-9/12 h-8 ">
                         <div className="flex items-center ">
                             <i className="px-3 fas fa-search ml-1"></i>
@@ -132,15 +136,29 @@ export const Header2 = () => {
                     </div>
 
                 </div>
-                <div>
-                <NftCard/>
+                <div className='grid gap-8 mx-4  col-2'>
+
+                    <div className='flex justify-center gap-4'>
+                        <NftCard />
+                        <div className=' flex justify-end ml-12'>
+                    <ChartDonuts/>
+                    </div>
+                    </div>
+                    <div className='flex justify-end gap-4'>
+                    <div>
+                    <Charts />
+                    </div>
+                    <div>
+                            <ChartLineal />
+                        </div>
+                        <div>
+                            <ChartBarra />
+                        </div>
+                       
+                    </div>
+                   
                 </div>
-
-            
             </div>
-
-
-
         </div>
     );
 };
