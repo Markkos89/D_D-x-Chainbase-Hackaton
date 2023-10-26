@@ -4,6 +4,7 @@ import ChainsListTab from "@/components/ChainsListTab";
 import { useEffect, useState } from "react";
 import { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 import Image from "next/image";
+import { Address } from "@thirdweb-dev/sdk";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,8 +42,25 @@ export default function Home() {
   useEffect(() => {
     if (searchInputValue === "") return;
     if (searchInputValue.startsWith("0x")) {
+      // const postFetchCollectionInfoByContractAddress = async (
+      //   contractAddress: Address
+      // ) => {
+      //   const options = {
+      //     method: "POST",
+      //     headers: { accept: "application/json" },
+      //     body: JSON.stringify({
+      //       contract_address: contractAddress,
+      //     }),
+      //   };
+      //   const res = await fetch(`api/fetcollectioninfobyaddress`, options)
+      //     .then((response) => response.json())
+      //     .catch((err) => console.error(err));
+      //   if (!res) return;
+      //   setTopTrendingNFTs(res);
+      // };
+      // postFetchCollectionInfoByContractAddress(searchInputValue);
     }
-  }, []);
+  }, [searchInputValue]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14">
