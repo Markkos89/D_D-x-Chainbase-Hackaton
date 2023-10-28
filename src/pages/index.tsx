@@ -1,10 +1,11 @@
 import { Inter } from "next/font/google";
 import Searchbar from "@/components/Searchbar";
 import ChainsListTab from "@/components/ChainsListTab";
-import TrendingNFTsTable from "@/components/TrendingNFTsTable";
 import { useEffect, useState } from "react";
 import { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 import Image from "next/image";
+import { useDebounce } from "usehooks-ts";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,10 @@ export default function Home() {
       next_page: 2,
       count: 20,
     });
+  const [searchInputValue, setSearchInputValue] = useState<string>("");
+  const debouncedValue = useDebounce<string>(searchInputValue, 500);
+
+  const router = useRouter();
 
   useEffect(() => {
     async function getTopTrendingNFTs() {
@@ -27,7 +32,7 @@ export default function Home() {
       };
       const res = await fetch(
         `https://api.chainbase.online/v1/nft/collection/trending?chain_id=${currentChain}&range=7d&exchange_name=all&sort=volume_desc&page=1&limit=20`,
-        options
+        options,
       )
         .then((response) => response.json())
         .catch((err) => console.error(err));
@@ -38,9 +43,20 @@ export default function Home() {
     getTopTrendingNFTs();
   }, [currentChain]);
 
+  useEffect(() => {
+    if (debouncedValue === "") return;
+    if (debouncedValue.startsWith("0x")) {
+      router.push(`/nftcollection/${debouncedValue}/1`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedValue]);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14">
-      <Searchbar />
+      <Searchbar
+        searchInputValue={searchInputValue}
+        handleSearchInputValue={setSearchInputValue}
+      />
       <section className="container mx-auto">
         <ChainsListTab
           selectedChainId={currentChain}
@@ -55,88 +71,88 @@ export default function Home() {
                     <tr>
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Rank
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Image
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Collection Name
                       </th>
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Symbol
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Owner
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Volume
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Floor Price
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Last Floor Price
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Last Trade Time
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-500 rtl:text-right dark:text-gray-400"
                       >
                         Sales
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                  <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
                     {topTrendingNFTs !== undefined &&
                     topTrendingNFTs?.data &&
                     topTrendingNFTs.data?.length > 0
                       ? topTrendingNFTs?.data?.map((nftData, idx) => (
                           <tr key={idx}>
-                            <td className="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200">
                               <div className="inline-flex items-center gap-x-3">
                                 <span>{`#${idx + 1}`}</span>
                               </div>
                             </td>
-                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                               <Image
-                                className="object-cover w-8 h-8 rounded-full"
+                                className="h-8 w-8 rounded-full object-cover"
                                 src={
                                   nftData.collection?.image_url
                                     ? nftData.collection.image_url
@@ -147,28 +163,28 @@ export default function Home() {
                                 height={32}
                               />
                             </td>
-                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                               {`${nftData.collection?.name}`}
                             </td>
-                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                               {`${nftData.collection?.symbol}`}
                             </td>
-                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                               {`${nftData.collection?.owner}`}
                             </td>
-                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                               {`${nftData.volume}`}
                             </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm">
                               {`${nftData.floor_price}`}
                             </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm">
                               {`${nftData.last_floor_price}`}
                             </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm">
                               {`${nftData.latest_trade_time}`}
                             </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <td className="whitespace-nowrap px-4 py-4 text-sm">
                               {`${nftData.sales}`}
                             </td>
                           </tr>
@@ -182,10 +198,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mt-6">
+        <div className="mt-6 flex items-center justify-between">
           <a
             href="#"
-            className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
+            className="flex items-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize text-gray-700 transition-colors duration-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +209,7 @@ export default function Home() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-5 h-5 rtl:-scale-x-100"
+              className="h-5 w-5 rtl:-scale-x-100"
             >
               <path
                 strokeLinecap="round"
@@ -205,46 +221,46 @@ export default function Home() {
             <span>previous</span>
           </a>
 
-          <div className="items-center hidden md:flex gap-x-3">
+          <div className="hidden items-center gap-x-3 md:flex">
             <a
               href="#"
-              className="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60"
+              className="rounded-md bg-blue-100/60 px-2 py-1 text-sm text-blue-500 dark:bg-gray-800"
             >
               1
             </a>
             <a
               href="#"
-              className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
+              className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               2
             </a>
             <a
               href="#"
-              className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
+              className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               3
             </a>
             <a
               href="#"
-              className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
+              className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               ...
             </a>
             <a
               href="#"
-              className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
+              className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               12
             </a>
             <a
               href="#"
-              className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
+              className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               13
             </a>
             <a
               href="#"
-              className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
+              className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               14
             </a>
@@ -252,7 +268,7 @@ export default function Home() {
 
           <a
             href="#"
-            className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
+            className="flex items-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize text-gray-700 transition-colors duration-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
             <span>Next</span>
 
@@ -262,7 +278,7 @@ export default function Home() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-5 h-5 rtl:-scale-x-100"
+              className="h-5 w-5 rtl:-scale-x-100"
             >
               <path
                 strokeLinecap="round"
@@ -272,10 +288,7 @@ export default function Home() {
             </svg>
           </a>
         </div>
-        
       </section>
-      
     </main>
-    
   );
 }
