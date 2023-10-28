@@ -11,7 +11,7 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false }); //impor
     
 
     return (
-      <div className='flex   my-4'>
+      <div className='flex   mx-4 my-4'>
         <div className=" py-3 px-3 rounded-xl border border-gray-200 bg-black">
           <div className="donut">
           <h5 className="text-xl text-white text-center my-4">Volume and Price</h5>

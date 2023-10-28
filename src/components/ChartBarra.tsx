@@ -27,7 +27,7 @@ export default function ChartBars() {
    
    
     return (
-      <div className='flex  my-4'>
+      <div className='flex  mx-4 my-4'>
         <div className=" py-6 px-6 rounded-xl border border-gray-200 bg-black">
           <div className="app">
           <div className="row">
