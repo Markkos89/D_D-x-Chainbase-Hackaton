@@ -4,7 +4,7 @@
 import Searchbar from "@/components/Searchbar";
 import ChainsListTab from "@/components/ChainsListTab";
 import { useEffect, useState } from "react";
-import { type TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
+import type { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 import Image from "next/image";
 import { useDebounce } from "usehooks-ts";
 import { useRouter } from "next/router";
