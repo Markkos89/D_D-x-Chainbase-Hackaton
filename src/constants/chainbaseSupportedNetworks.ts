@@ -1,4 +1,4 @@
-import { ISupportedChain } from "@/interfaces/ISupportedChain";
+import type { ISupportedChain } from "@/interfaces/ISupportedChain";
 
 export const supportedChainsArray: ISupportedChain[] = [
   {

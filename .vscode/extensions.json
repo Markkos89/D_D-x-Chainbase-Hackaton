@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "oderwat.indent-rainbow",
+    "wix.vscode-import-cost",
+    "esbenp.prettier-vscode",
+    "rvest.vs-code-prettier-eslint",
+    "yoavbls.pretty-ts-errors",
+    "simonsiefke.svg-preview",
+    "henrynguyen5-vsc.vsc-nvm",
+    "pflannery.vscode-versionlens"
+  ]
+}
