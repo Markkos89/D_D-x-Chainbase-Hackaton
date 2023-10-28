@@ -1,45 +1,31 @@
-import React, { Component } from 'react';
-import Chart from 'react-apexcharts';
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 
-interface State {
-  options: {
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+
+
+
+export default function ChartBars() {
+  const [ options, setOptions] = useState(
+    {
     chart: {
-      id: string;
-    };
+      id: 'basic-bar',
+    },
     xaxis: {
-      categories: number[];
-    };
-  };
-  series: Array<{
-    name: string;
-    data: number[];
-  }>;
-}
-
-class ChartBarra extends Component<{}, State> {
-  constructor(props: {}) {
-    super(props);
-
-
-    this.state = {
-      options: {
-        chart: {
-          id: 'basic-bar',
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-        },
+      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+    },
+  })
+  
+   const[ series, setSeries] = useState (
+    [
+      {
+        name: 'series-1',
+        data: [30, 40, 45, 50, 49, 60, 70, 91],
       },
-      series: [
-        {
-          name: 'series-1',
-          data: [30, 40, 45, 50, 49, 60, 70, 91],
-        },
-      ],
-    };
-  }
-
-  render() {
+    ]
+   )
+   
+   
     return (
       <div className='flex  my-4'>
         <div className=" py-6 px-6 rounded-xl border border-gray-200 bg-black">
@@ -48,8 +34,8 @@ class ChartBarra extends Component<{}, State> {
             <div className="mixed-chart">
             <h5 className="text-xl text-center text-white">Price Distribution</h5>
               <Chart
-                options={this.state.options}
-                series={this.state.series}
+                options={options}
+                series={series}
                 type="bar"
                 width="500"
               />
@@ -63,7 +49,4 @@ class ChartBarra extends Component<{}, State> {
         </div>
         
         );
-  }
-}
-
-        export default ChartBarra;
+  };

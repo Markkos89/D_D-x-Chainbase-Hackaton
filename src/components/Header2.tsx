@@ -1,10 +1,12 @@
-import React from 'react'
+  import React from 'react'
 import Image from 'next/image';
 import NftCard from './NftCards';
 import Charts from './Charts';
 import ChartBarra from './ChartBarra';
 import ChartLineal from './ChartLineal';
 import ChartDonuts from './ChartDonuts';
+
+
 
 export const Header2 = () => {
     return (
@@ -141,22 +143,22 @@ export const Header2 = () => {
                     <div className='flex justify-center gap-4'>
                         <NftCard />
                         <div className=' flex justify-end ml-12'>
-                    <ChartDonuts/>
-                    </div>
+                            <ChartDonuts />
+                        </div>
                     </div>
                     <div className='flex justify-end gap-4'>
-                    <div>
-                    <Charts />
-                    </div>
-                    <div>
+                        <div>
+                            <Charts />
+                        </div>
+                        <div>
                             <ChartLineal />
                         </div>
                         <div>
                             <ChartBarra />
                         </div>
-                       
+
                     </div>
-                   
+
                 </div>
             </div>
         </div>
