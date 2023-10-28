@@ -4,7 +4,6 @@ import ChainsListTab from "@/components/ChainsListTab";
 import { useEffect, useState } from "react";
 import { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 import Image from "next/image";
-import { Address } from "@thirdweb-dev/sdk";
 import { useDebounce } from "usehooks-ts";
 import { useRouter } from "next/router";
 
