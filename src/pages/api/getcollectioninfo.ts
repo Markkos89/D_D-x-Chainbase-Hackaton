@@ -1,7 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { NextApiRequest, NextApiResponse } from "next";
 
+export interface IGetCollectionInfo extends NextApiRequest {
+  body: {
+    address: string;
+    chainId: string;
+  };
+}
+
 export default async function handler(
-  req: NextApiRequest,
+  req: IGetCollectionInfo,
   res: NextApiResponse,
 ) {
   if (req.method === "POST") {
