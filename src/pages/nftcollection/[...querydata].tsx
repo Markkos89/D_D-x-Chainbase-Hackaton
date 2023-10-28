@@ -1,61 +1,41 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import NftCard from "@/components/NftCards";
-import Image from "next/image";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+// import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-type NftCollectionPageType = {
-  message: string;
-  rawNFTsOwnersFetchResponse: any;
-  rawNFTCollectionFloorPriceFetchResponse: any;
-  rawNFTCollectionItems: any;
-  rawNFTCollectionMetadataFetchResponse: any;
-};
+export default function ColectionPage() {
+  const router = useRouter();
 
-// export const getServerSideProps = (async (context) => {
-// const { querydata } = context.query;
-// const contractAddress = querydata?.length ? querydata[0] : undefined;
-// const chainId = querydata?.length ? querydata[1] : undefined;
-// const res = await fetch(
-//   `/api/getcollectioninfo/${contractAddress}/${chainId}`,
-//   {
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     method: "POST",
-//   }
-// );
-// const {
-//   message,
-//   rawNFTsOwnersFetchResponse,
-//   rawNFTCollectionFloorPriceFetchResponse,
-//   rawNFTCollectionItems,
-//   rawNFTCollectionMetadataFetchResponse,
-// } = await res.json();
-// return {
-//   props: {
-//     message,
-//     rawNFTsOwnersFetchResponse,
-//     rawNFTCollectionFloorPriceFetchResponse,
-//     rawNFTCollectionItems,
-//     rawNFTCollectionMetadataFetchResponse,
-//   },
-// };
-// }) satisfies GetServerSideProps<NftCollectionPageType>;
+  const { querydata } = router.query;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+  const [data, setData] = useState<any>(null);
 
-export default function colectionPage(
-  {
-    // message,
-    // rawNFTsOwnersFetchResponse,
-    // rawNFTCollectionFloorPriceFetchResponse,
-    // rawNFTCollectionItems,
-    // rawNFTCollectionMetadataFetchResponse,
-  },
-) /* : InferGetServerSidePropsType<typeof getServerSideProps> */ {
-  // console.log({
-  //   rawNFTsOwnersFetchResponse,
-  //   rawNFTCollectionFloorPriceFetchResponse,
-  //   rawNFTCollectionItems,
-  //   rawNFTCollectionMetadataFetchResponse,
-  // });
+  useEffect(() => {
+    async function fetchData(address: string, id: string) {
+      const res = await fetch(`api/getcollectioninfo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ address, chainId: id }),
+      });
+      const data = await res.json();
+      setData(data);
+    }
+    console.log({ querydata });
+
+    if (querydata === undefined) return;
+
+    const [address, id] = querydata as string[];
+    if (address && id) {
+      fetchData(address, id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log({ data });
   return (
     <div className="cointener-none ml-4 mr-4 justify-items-stretch bg-zinc-950">
       <div className="w-full border-0 ">
@@ -65,7 +45,7 @@ export default function colectionPage(
           </div>
         </div>
         <div className="absolute left-4 -mt-32 ml-5 box-border rounded-xl border-4 border-zinc-950">
-          <Image
+          {/* <Image
             src="/Dao-perfil.png"
             alt="User"
             width={150}
@@ -73,7 +53,7 @@ export default function colectionPage(
             height={10}
             border-radius={0.5}
             className="rounded-md"
-          />
+          /> */}
         </div>
       </div>
 
@@ -186,9 +166,9 @@ export default function colectionPage(
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M19 9l-7 7-7-7"
                 />
               </svg>
