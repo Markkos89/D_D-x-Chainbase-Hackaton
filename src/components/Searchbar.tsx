@@ -9,18 +9,20 @@ const Searchbar = ({
   searchInputValue,
   handleSearchInputValue,
 }: SearchbarProps) => {
-  const handleSearchInputValueChange = (e: any) => {
+  const handleSearchInputValueChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     handleSearchInputValue(e.target.value);
   };
 
   return (
-    <div className="bg-white rounded-full border-none p-3 mb-4 shadow-md w-full">
+    <div className="mb-4 w-full rounded-full border-none bg-white p-3 shadow-md">
       <div className="flex items-center">
-        <i className="px-3 fas fa-search ml-1"></i>
+        <i className="fas fa-search ml-1 px-3"></i>
         <input
           type="text"
           placeholder="Search NFT (or ERC20 token?) by address..."
-          className="ml-3 focus:outline-none w-full"
+          className="ml-3 w-full focus:outline-none"
           value={searchInputValue}
           onChange={handleSearchInputValueChange}
         />

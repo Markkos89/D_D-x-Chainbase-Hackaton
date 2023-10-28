@@ -1,13 +1,13 @@
-import { Inter } from "next/font/google";
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Searchbar from "@/components/Searchbar";
 import ChainsListTab from "@/components/ChainsListTab";
 import { useEffect, useState } from "react";
-import { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
+import type { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 import Image from "next/image";
 import { useDebounce } from "usehooks-ts";
 import { useRouter } from "next/router";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [currentChain, setCurrentChain] = useState<number>(1);
@@ -182,7 +182,9 @@ export default function Home() {
                               {`${nftData.last_floor_price}`}
                             </td>
                             <td className="whitespace-nowrap px-4 py-4 text-sm">
-                              {`${nftData.latest_trade_time}`}
+                              {`${new Date(
+                                nftData.latest_trade_time,
+                              ).toISOString()}`}
                             </td>
                             <td className="whitespace-nowrap px-4 py-4 text-sm">
                               {`${nftData.sales}`}
