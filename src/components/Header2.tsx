@@ -101,39 +101,8 @@ export const Header2 = () => {
 
         <hr></hr>
 
-        <div className="h-30 mx-auto  flex w-full items-center  px-5">
-          <div className="mb-4 flex h-8 w-9/12 rounded-full border-none bg-white p-3 shadow-md ">
-            <div className="flex items-center ">
-              <i className="fas fa-search ml-1 px-3"></i>
-              <input
-                type="text"
-                placeholder="Buscar..."
-                className="focus:outline-non  ml-3 "
-              />
-            </div>
-          </div>
-
-          <div className="bg-blackshadow-lg my-4 flex items-center space-x-6 p-5">
-            <div className="flex cursor-pointer rounded-lg bg-gray-100 px-4 py-3 font-semibold text-gray-500">
-              <span>Categories</span>
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-
-            <div className="inline-flex rounded-full border-2 border-gray-200 bg-gray-200 text-sm leading-none text-gray-500">
+        <div className="h-30 mx-auto my-auto flex w-full items-center  ">
+        <div className="flex rounded-full justify-center   border-2 border-gray-200 bg-gray-200 text-sm leading-none text-gray-500 mx-4 mb-4">
               <button
                 className="active inline-flex items-center rounded-l-full px-4 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none"
                 id="grid"
@@ -183,7 +152,41 @@ export const Header2 = () => {
                 <span>List</span>
               </button>
             </div>
+          <div className="mb-4 flex h-8 w-9/12 rounded-full border-none bg-white p-3 shadow-md ">
+            <div className="flex items-center ">
+              <i className="fas fa-search ml-1 px-3"></i>
+              <input
+                type="text"
+                placeholder="Buscar..."
+                className="focus:outline-non  ml-3 "
+              />
+            </div>
           </div>
+          
+
+          <div className="bg-blackshadow-lg my-4 flex items-center space-x-6 p-5">
+            <div className="flex cursor-pointer rounded-lg bg-gray-100 px-4 py-3 font-semibold text-gray-500">
+              <span>Categories</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+
+            
+          </div>
+          
         </div>
       </div>
     </div>
