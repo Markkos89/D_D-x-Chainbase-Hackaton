@@ -112,8 +112,10 @@ export default async function TrendingNFTsTable({
                               height={32}
                             />
                           </td>
-                          <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                          <td className=" px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            
                             {`${nftData.collection?.name}`}
+                           
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             {`${nftData.collection?.symbol}`}
