@@ -43,6 +43,7 @@ export default function Home() {
     getTopTrendingNFTs();
   }, [currentChain]);
 
+ 
   useEffect(() => {
     if (debouncedValue === "") return;
     if (debouncedValue.startsWith("0x")) {
@@ -141,56 +142,68 @@ export default function Home() {
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
                     {topTrendingNFTs !== undefined &&
-                    topTrendingNFTs?.data &&
-                    topTrendingNFTs.data?.length > 0
+                      topTrendingNFTs?.data &&
+                      topTrendingNFTs.data?.length > 0
                       ? topTrendingNFTs?.data?.map((nftData, idx) => (
-                          <tr key={idx}>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200">
-                              <div className="inline-flex items-center gap-x-3">
-                                <span>{`#${idx + 1}`}</span>
-                              </div>
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              <Image
-                                className="h-8 w-8 rounded-full object-cover"
-                                src={
-                                  nftData.collection?.image_url
-                                    ? nftData.collection.image_url
-                                    : ""
-                                }
-                                alt=""
-                                width={32}
-                                height={32}
-                              />
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                        <tr key={idx}>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200">
+                            <div className="inline-flex items-center gap-x-3">
+                              <span>{`#${idx + 1}`}</span>
+                            </div>
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                            <button className="cursor-pointer"
+                              onClick={() => router.push(`/nftcollection/${nftData.collection?.owner}`)}>
+                            <Image
+                              className="h-8 w-8 rounded-full object-cover"
+                              src={
+                                nftData.collection?.image_url
+                                  ? nftData.collection.image_url
+                                  : ""
+                              }
+                              alt=""
+                              width={32}
+                              height={32}
+                            />
+                            </button>
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                            <button
+                              className="cursor-pointer"
+                              onClick={() => router.push(`/nftcollection/${nftData.collection?.owner}`)}
+                            >
                               {`${nftData.collection?.name}`}
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              {`${nftData.collection?.symbol}`}
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              {`${nftData.collection?.owner}`}
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              {`${nftData.volume}`}
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm">
-                              {`${nftData.floor_price}`}
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm">
-                              {`${nftData.last_floor_price}`}
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm">
-                              {`${new Date(
-                                nftData.latest_trade_time,
-                              ).toISOString()}`}
-                            </td>
-                            <td className="whitespace-nowrap px-4 py-4 text-sm">
-                              {`${nftData.sales}`}
-                            </td>
-                          </tr>
-                        ))
+                            </button>
+                          </td>
+                          <td className=" whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                            
+                            {`${nftData.collection?.symbol}`}
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                          <button
+                              className="cursor-pointer"
+                              onClick={() => router.push(`/nftcollection/${nftData.collection?.owner}`)}
+                            >
+                            {`${nftData.collection?.owner}`}
+                            </button>
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                            {`${nftData.volume}`}
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm">
+                            {`${nftData.floor_price}`}
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm">
+                            {`${nftData.last_floor_price}`}
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm">
+                            {`${nftData.latest_trade_time}`}
+                          </td>
+                          <td className="whitespace-nowrap px-4 py-4 text-sm">
+                            {`${nftData.sales}`}
+                          </td>
+                        </tr>
+                      ))
                       : null}
                     {/* Here, instead of showing a null value we will show a loading SPINNER */}
                   </tbody>
