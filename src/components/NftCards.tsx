@@ -78,21 +78,17 @@ const NftCards = () => {
               By Esthera Jackson{" "}
             </p>
           </div>
-          
         </div>
         <div className="flex-col items-center justify-between">
-          
-          <div className="flex justify-center my-2">
-            
+          <div className="my-2 flex justify-center">
             <p className="text-brand text-center text-sm font-bold text-white">
-              Current Bid: 
-               0.91 ETH 
+              Current Bid: 0.91 ETH
             </p>
             <div className="mx-2">
               <svg
                 stroke="currentColor"
                 fill="currentColor"
-                stroke-width="0"
+                strokeWidth="0"
                 viewBox="0 0 320 512"
                 height="1em"
                 width="1em"
@@ -107,7 +103,7 @@ const NftCards = () => {
             href="https://tailwindcomponents.com/component/nft-card-horizon-ui-tailwind"
             passHref
           >
-            <button className="linear rounded-lg w-full bg-white px-[16px] py-[8px] text-base font-medium text-black transition duration-[200ms]">
+            <button className="linear w-full rounded-lg bg-white px-[16px] py-[8px] text-base font-medium text-black transition duration-[200ms]">
               Place Bid
             </button>
           </Link>

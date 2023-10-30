@@ -4,7 +4,6 @@ import ChartBars from "@/components/ChartBarra";
 import ChartLineal from "@/components/ChartLineal";
 import Footer from "@/components/Footer";
 import Header2 from "@/components/Header2";
-import ListCards from "@/components/ListCards";
 import NftCard from "@/components/NftCards";
 import TopHistory from "@/components/TopHistory";
 import TransactionTable from "@/components/TransactionTable";

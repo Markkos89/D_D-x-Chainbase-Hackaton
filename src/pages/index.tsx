@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Searchbar from "@/components/Searchbar";
-import ChainsListTab from "@/components/ChainsListTab";
+// import ChainsListTab from "@/components/ChainsListTab";
 import { useEffect, useState } from "react";
 import type { TopTrendingNFTsResponse } from "@/interfaces/topTrendingNFTsResponse";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import { useDebounce } from "usehooks-ts";
 import { useRouter } from "next/router";
 
 export default function Home() {
-  const [currentChain, setCurrentChain] = useState<number>(1);
+  // const [currentChain, setCurrentChain] = useState<number>(1);
   const [topTrendingNFTs, setTopTrendingNFTs] =
     useState<TopTrendingNFTsResponse>({
       code: 1,
@@ -31,7 +31,7 @@ export default function Home() {
         headers: { accept: "application/json", "x-api-key": "demo" },
       };
       const res = await fetch(
-        `https://api.chainbase.online/v1/nft/collection/trending?chain_id=${currentChain}&range=7d&exchange_name=all&sort=volume_desc&page=1&limit=20`,
+        `https://api.chainbase.online/v1/nft/collection/trending?chain_id=1&range=7d&exchange_name=all&sort=volume_desc&page=1&limit=20`,
         options,
       )
         .then((response) => response.json())
@@ -41,7 +41,7 @@ export default function Home() {
       setTopTrendingNFTs(res);
     }
     getTopTrendingNFTs();
-  }, [currentChain]);
+  }, []);
 
   useEffect(() => {
     if (debouncedValue === "") return;
@@ -58,10 +58,10 @@ export default function Home() {
         handleSearchInputValue={setSearchInputValue}
       />
       <section className="container mx-auto">
-        <ChainsListTab
+        {/* <ChainsListTab
           selectedChainId={currentChain}
           setSelectedChainId={setCurrentChain}
-        />
+        /> */}
         <div className="flex flex-col">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -148,7 +148,7 @@ export default function Home() {
                             key={idx} // eslint-disable-next-line @typescript-eslint/no-misused-promises
                             onClick={() =>
                               router.push(
-                                `/nftcollection/${nftData.collection?.contract_address}`,
+                                `/nftcollection/${nftData.collection?.contract_address}/1`,
                               )
                             }
                           >
