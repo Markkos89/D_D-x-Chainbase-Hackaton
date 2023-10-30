@@ -96,10 +96,10 @@ export const Header2 = () => {
           </div>
         </div>
         <hr></hr>
-        <div className="h-30 mx-auto my-auto flex w-full items-center  ">
+        <div className="h-30 mx-10 my-auto flex w-full items-center  ">
         <div className="flex rounded-full justify-center   border-2 border-gray-200 bg-gray-200 text-sm leading-none text-gray-500 mx-4 mb-4">
               <button
-                className="active inline-flex items-center rounded-l-full px-4 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none"
+                className="active inline-flex items-center rounded-l-full px-2 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none"
                 id="grid"
               >
                 <svg
@@ -122,7 +122,7 @@ export const Header2 = () => {
                 <span>Grid</span>
               </button>
               <button
-                className="inline-flex items-center rounded-r-full px-4 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none"
+                className="inline-flex items-center rounded-r-full px-3 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none"
                 id="list"
               >
                 <svg
@@ -147,18 +147,18 @@ export const Header2 = () => {
                 <span>List</span>
               </button>
             </div>
-          <div className="mb-4 flex h-8 w-9/12 rounded-full border-none bg-white p-3 shadow-md ">
-            <div className="flex items-center ">
+          <div className="mb-4 flex h-8 w-1/4 rounded-full  border-none bg-white p-3 shadow-md ">
+            <div className="flex w-full text-black items-center ">
               <i className="fas fa-search ml-1 px-3"></i>
               <input
                 type="text"
                 placeholder="Buscar..."
-                className="focus:outline-non  ml-3 "
+                className="w-full focus:outline-none" 
               />
             </div>
           </div>
-          <div className="bg-blackshadow-lg my-4 flex items-center space-x-6 p-5">
-            <div className="flex cursor-pointer rounded-lg bg-gray-100 px-4 py-3 font-semibold text-gray-500">
+          <div className="bg-blackshadow-lg my-2 flex items-center space-x-6 p-5">
+            <div className="flex cursor-pointer mb-1 px-2 py-2 rounded-lg bg-gray-100  font-semibold text-gray-500">
               <span>Categories</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
