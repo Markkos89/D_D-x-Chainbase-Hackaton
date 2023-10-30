@@ -110,8 +110,9 @@ export default function TrendingNFTsTable({ collectionsDataResponse }: Props) {
                               height={32}
                             />
                           </td>
-                          <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                          <td className=" px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             {`${nftData.collection?.name}`}
+                           
                           </td>
                           <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                             {`${nftData.collection?.symbol}`}
