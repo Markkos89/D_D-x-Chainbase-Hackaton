@@ -144,21 +144,20 @@ export default function Home() {
                     topTrendingNFTs?.data &&
                     topTrendingNFTs.data?.length > 0
                       ? topTrendingNFTs?.data?.map((nftData, idx) => (
-                          <tr key={idx}>
+                          <tr
+                            key={idx} // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                            onClick={() =>
+                              router.push(
+                                `/nftcollection/${nftData.collection?.contract_address}`,
+                              )
+                            }
+                          >
                             <td className="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200">
                               <div className="inline-flex items-center gap-x-3">
                                 <span>{`#${idx + 1}`}</span>
                               </div>
                             </td>
-                            <td
-                              className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300"
-                              // eslint-disable-next-line @typescript-eslint/no-misused-promises
-                              onClick={() =>
-                                router.push(
-                                  `/nftcollection/${nftData.collection?.contract_address}`,
-                                )
-                              }
-                            >
+                            <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                               <button className="cursor-pointer">
                                 <Image
                                   className="h-8 w-8 rounded-full object-cover"
