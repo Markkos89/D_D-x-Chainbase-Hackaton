@@ -13,7 +13,8 @@ const NftCards = () => {
                 alt="User"
                 width={250}
                 height={100}
-                objectFit="cover"
+                // objectFit="cover"
+                className="object-cover"
               />
             </div>
           </div>

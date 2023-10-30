@@ -18,13 +18,13 @@ const Charts = () => {
           <path
             d="M0 67.5C27.8998 67.5 24.6002 15 52.5 15C80.3998 15 77.1002 29 105 29C132.9 29 128.6 52 156.5 52C184.4 52 189.127 63.8158 217.027 63.8158"
             stroke="url(#paint0_linear_622:13664)"
-            stroke-width="3"
+            strokeWidth="3"
             stroke-linecap="round"
           />
           <path
             d="M0 67.5C27.2601 67.5 30.7399 31 58 31C85.2601 31 80.7399 2 108 2C135.26 2 134.74 43 162 43C189.26 43 190.74 63.665 218 63.665"
             stroke="url(#paint1_linear_622:13664)"
-            stroke-width="3"
+            strokeWidth="3"
             stroke-linecap="round"
           />
           <defs>
@@ -98,7 +98,7 @@ const Charts = () => {
                   <path
                     d="M0 7C8.62687 7 7.61194 16 17.7612 16C27.9104 16 25.3731 9 34 9C42.6269 9 44.5157 5 51.2537 5C57.7936 5 59.3731 14.5 68 14.5"
                     stroke="url(#paint0_linear_622:13631)"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke-linejoin="round"
                   />
                   <defs>
@@ -161,7 +161,7 @@ const Charts = () => {
                   <path
                     d="M0 12.929C8.69077 12.929 7.66833 9.47584 17.8928 9.47584C28.1172 9.47584 25.5611 15.9524 34.2519 15.9524C42.9426 15.9524 44.8455 10.929 51.6334 10.929C58.2217 10.929 59.3092 5 68 5"
                     stroke="url(#paint0_linear_622:13640)"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke-linejoin="round"
                   />
                   <defs>

@@ -22,7 +22,6 @@ export const Header2 = () => {
           />
         </div>
       </div>
-
       <div className="bg-primary flex-col pt-14">
         <div className="mb-1 h-5 w-96 text-white">
           <a
@@ -32,7 +31,6 @@ export const Header2 = () => {
             <h2 className="ml-4 text-2xl font-bold ">Devs for Revolution</h2>
           </a>
         </div>
-
         <div className="flex gap-8 px-5  pt-8">
           <div className="flex  flex-row  ">
             <div className="text-s content-evenly text-gray-400/80 hover:text-gray-400">
@@ -55,7 +53,6 @@ export const Header2 = () => {
             </div>
           </div>
         </div>
-
         <div className="bcode my-6 break-all px-5">
           <div className="mb-3 mt-6 flex gap-14 md:!gap-14">
             <div className="flex flex-col items-center justify-center">
@@ -98,9 +95,7 @@ export const Header2 = () => {
             </div>
           </div>
         </div>
-
         <hr></hr>
-
         <div className="h-30 mx-auto my-auto flex w-full items-center  ">
         <div className="flex rounded-full justify-center   border-2 border-gray-200 bg-gray-200 text-sm leading-none text-gray-500 mx-4 mb-4">
               <button
@@ -114,7 +109,7 @@ export const Header2 = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   className="mr-2 h-4 w-4 fill-current"
@@ -137,7 +132,7 @@ export const Header2 = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   className="mr-2 h-4 w-4 fill-current"
@@ -162,12 +157,9 @@ export const Header2 = () => {
               />
             </div>
           </div>
-          
-
           <div className="bg-blackshadow-lg my-4 flex items-center space-x-6 p-5">
             <div className="flex cursor-pointer rounded-lg bg-gray-100 px-4 py-3 font-semibold text-gray-500">
               <span>Categories</span>
-
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -183,10 +175,7 @@ export const Header2 = () => {
                 />
               </svg>
             </div>
-
-            
           </div>
-          
         </div>
       </div>
     </div>
