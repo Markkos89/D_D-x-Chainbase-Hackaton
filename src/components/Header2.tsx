@@ -1,7 +1,14 @@
 import React from "react";
 import Image from "next/image";
 
+
+
+
 export const Header2 = () => {
+
+    
+
+  
   return (
     <div className="cointener-none mx-4 justify-items-stretch bg-zinc-950">
       <div className="w-full border-0 ">
@@ -96,86 +103,55 @@ export const Header2 = () => {
           </div>
         </div>
         <hr></hr>
-        <div className="h-30 mx-10 my-auto flex w-full items-center  ">
-        <div className="flex rounded-full justify-center   border-2 border-gray-200 bg-gray-200 text-sm leading-none text-gray-500 mx-4 mb-4">
-              <button
-                className="active inline-flex items-center rounded-l-full px-2 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none"
-                id="grid"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  className="mr-2 h-4 w-4 fill-current"
-                >
-                  <rect x="3" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="14" width="7" height="7"></rect>
-                  <rect x="3" y="14" width="7" height="7"></rect>
-                </svg>
-                <span>Grid</span>
-              </button>
-              <button
-                className="inline-flex items-center rounded-r-full px-3 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none"
-                id="list"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  className="mr-2 h-4 w-4 fill-current"
-                >
-                  <line x1="8" y1="6" x2="21" y2="6"></line>
-                  <line x1="8" y1="12" x2="21" y2="12"></line>
-                  <line x1="8" y1="18" x2="21" y2="18"></line>
-                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                </svg>
-                <span>List</span>
-              </button>
-            </div>
-          <div className="mb-4 flex h-8 w-1/4 rounded-full  border-none bg-white p-3 shadow-md ">
-            <div className="flex w-full text-black items-center ">
-              <i className="fas fa-search ml-1 px-3"></i>
-              <input
-                type="text"
-                placeholder="Buscar..."
-                className="w-full focus:outline-none" 
-              />
-            </div>
-          </div>
-          <div className="bg-blackshadow-lg my-2 flex items-center space-x-6 p-5">
-            <div className="flex cursor-pointer mb-1 px-2 py-2 rounded-lg bg-gray-100  font-semibold text-gray-500">
-              <span>Categories</span>
+        <div className="h-30 mx-6  flex w-full items-center  ">
+          <div className="flex rounded-full justify-center my-4   border-2 border-gray-200 bg-gray-200 text-sm leading-none text-gray-500 mx-4 mb-4">
+          <button  className="active inline-flex items-center rounded-l-full px-2 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none" id="grid">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
+                fill="none"
                 stroke="currentColor"
+                strokeWidth="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="mr-2 h-4 w-4 fill-current"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
               </svg>
-            </div>
+              <span>Grid</span>
+            </button>
+            <button className="inline-flex items-center rounded-r-full px-3 py-2 transition-colors duration-300 ease-in hover:text-blue-400 focus:text-blue-400 focus:outline-none" id="list">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="mr-2 h-4 w-4 fill-current"
+              >
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              <span>List</span>
+            </button>
+            
+            
           </div>
+          
+          
         </div>
       </div>
     </div>

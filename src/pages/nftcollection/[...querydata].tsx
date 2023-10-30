@@ -4,6 +4,7 @@ import ChartBars from "@/components/ChartBarra";
 import ChartLineal from "@/components/ChartLineal";
 import Footer from "@/components/Footer";
 import Header2 from "@/components/Header2";
+import ListCards from "@/components/ListCards";
 import NftCard from "@/components/NftCards";
 import TopHistory from "@/components/TopHistory";
 import TransactionTable from "@/components/TransactionTable";
@@ -46,11 +47,6 @@ export default function ColectionPage() {
       <Header2 />
       <div className="cointener-none mx-4 flex bg-zinc-950 ">
         <div className="mx-10 w-1/2 justify-end">
-          <div className="flex gap-4 ">
-            <NftCard />
-            <NftCard />
-            <NftCard />
-          </div>
           <div className="flex gap-4">
             <NftCard />
             <NftCard />
