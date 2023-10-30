@@ -11,6 +11,7 @@
   "dependencies": {
     "@thirdweb-dev/react": "^4.0.8",
     "@thirdweb-dev/sdk": "^4.0.7",
+    "@vercel/analytics": "^1.1.1",
     "apexcharts": "^3.44.0",
     "ethers": "^5",
     "next": "13.5.6",
