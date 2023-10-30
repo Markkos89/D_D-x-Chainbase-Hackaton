@@ -6,10 +6,11 @@
 import ChartBars from "@/components/ChartBarra";
 import ChartLineal from "@/components/ChartLineal";
 import Footer from "@/components/Footer";
-import Header2 from "@/components/Header2";
+import Header from "@/components/Header";
 import NftCard from "@/components/NftCards";
 import TopHistory from "@/components/TopHistory";
 import TransactionTable from "@/components/TransactionTable";
+import type { INftCollectionMetadataData } from "@/interfaces/INftCollectionMetadataData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -18,8 +19,14 @@ export default function ColectionPage() {
 
   const { querydata } = router.query;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-  const [metadataData, setMetadataData] = useState<any>(null);
-  const [floorPricesData, setFloorPricesData] = useState<any>(null);
+  const [metadataData, setMetadataData] = useState<INftCollectionMetadataData>({
+    banner_image_url: "",
+    name: "",
+    description: "",
+    symbol: "",
+    owner_address: "",
+    floor_price: [],
+  });
   const [collectionItemsData, setCollectionItemsData] = useState<any>(null);
 
   useEffect(() => {
@@ -70,22 +77,12 @@ export default function ColectionPage() {
           symbol: rawNFTCollectionMetadataFetchResponse.data.symbol,
           owner_address:
             rawNFTCollectionMetadataFetchResponse.data.owner_address,
-        };
-        setMetadataData(formattedMetadataData);
-
-        const formattedFloorPriceData = {
           floor_price: rawNFTCollectionMetadataFetchResponse.data.floor_prices,
         };
-
-        setFloorPricesData(formattedFloorPriceData);
+        setMetadataData(formattedMetadataData);
       }
-
-      console.log({
-        rawNFTsOwnersFetchResponse,
-        // rawNFTCollectionFloorPriceFetchResponse,
-        rawNFTCollectionMetadataFetchResponse,
-      });
     }
+
     async function fetchCollectionItems(address: string, id: string) {
       const options = {
         method: "GET",
@@ -101,7 +98,7 @@ export default function ColectionPage() {
       )
         .then((response) => response.json())
         .catch((err) => console.error(err));
-      console.log({ rawNFTCollectionItems });
+
       setCollectionItemsData(rawNFTCollectionItems);
     }
     if (querydata === undefined) return;
@@ -120,7 +117,7 @@ export default function ColectionPage() {
 
   return (
     <div>
-      <Header2 />
+      <Header data={metadataData} />
       <div className="cointener-none mx-4 flex bg-zinc-950 ">
         <div className="mx-10 w-1/2 justify-end">
           <div className="flex gap-4">

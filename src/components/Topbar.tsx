@@ -1,6 +1,6 @@
 const Topbar = () => {
   return (
-    <nav className="flex dark:bg-slate-900 items-center relative justify-between bg-white px-5 py-6 w-full">
+    <nav className="relative flex w-full items-center justify-between bg-white px-5 py-6 dark:bg-slate-900">
       <div>
         <svg
           width="41"
@@ -34,9 +34,9 @@ const Topbar = () => {
       <ul
         id="drawer"
         role="menu"
-        className="sm:gap-3 transition-left ease-[cubic-bezier(0.4, 0.0, 0.2, 1)] delay-150  sm:flex  flex flex-col cursor-pointer absolute min-h-screen -left-48 sm:static w-48 top-0 bg-white sm:shadow-none shadow-xl sm:bg-transparent sm:flex-row sm:w-auto sm:min-h-0 dark:bg-slate-900  "
+        className="transition-left ease-[cubic-bezier(0.4, 0.0, 0.2, 1)] absolute -left-48  top-0  flex min-h-screen w-48 cursor-pointer flex-col bg-white shadow-xl delay-150 dark:bg-slate-900 sm:static sm:flex sm:min-h-0 sm:w-auto sm:flex-row sm:gap-3 sm:bg-transparent sm:shadow-none  "
       >
-        <div className="sm:hidden p-6 mb-5 flex items-center justify-center">
+        <div className="mb-5 flex items-center justify-center p-6 sm:hidden">
           <svg
             width="41"
             height="39"
@@ -62,23 +62,23 @@ const Topbar = () => {
             />
           </svg>
         </div>
-        <li className="font-medium text-sm p-3 hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent text-primary">
+        <li className="text-primary p-3 text-sm font-medium hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
           <a href="#" className="dark:text-white">
             Menu Option 1
           </a>
         </li>
-        <li className="font-medium text-sm p-3 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent text-gray-600 hover:text-primary transition-colors">
+        <li className="hover:text-primary cursor-pointer p-3 text-sm font-medium text-gray-600 transition-colors hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
           <a href="#" className="dark:text-white">
             Menu Option 2
           </a>
         </li>
-        <li className="font-medium text-sm p-3 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent text-gray-600 hover:text-primary transition-colors">
+        <li className="hover:text-primary cursor-pointer p-3 text-sm font-medium text-gray-600 transition-colors hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
           <a href="#" className="dark:text-white">
             Menu Option 3
           </a>
         </li>
       </ul>
-      <div className="flex gap-3 items-center">
+      <div className="flex items-center gap-3">
         {/* <svg
           width="24"
           height="24"
@@ -95,8 +95,8 @@ const Topbar = () => {
           />
         </svg> */}
 
-        <div className="h-10 w-10 hover:ring-4 user border-2 border-black cursor-pointer relative ring-blue-700/30 rounded-full bg-cover bg-center bg-[url('https://www.developerdao.com/D_D_logo-dark.svg')]">
-          <div className="drop-down  w-48 overflow-hidden bg-white rounded-md shadow absolute top-12 right-3">
+        <div className="user relative h-10 w-10 cursor-pointer rounded-full border-2 border-black bg-[url('https://www.developerdao.com/D_D_logo-dark.svg')] bg-cover bg-center ring-blue-700/30 hover:ring-4">
+          <div className="drop-down  absolute right-3 top-12 w-48 overflow-hidden rounded-md bg-white shadow">
             {/* <ul>
               <li className="px-3 py-3 text-sm font-medium flex items-center space-x-2 hover:bg-slate-400">
                 <span>
@@ -164,7 +164,7 @@ const Topbar = () => {
             </ul> */}
           </div>
         </div>
-        <div className="sm:hidden cursor-pointer" id="mobile-toggle">
+        <div className="cursor-pointer sm:hidden" id="mobile-toggle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -173,7 +173,7 @@ const Topbar = () => {
             stroke="currentColor"
           >
             <path
-              className="dark:stroke-white"
+              className="dark:strokeWhite"
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
