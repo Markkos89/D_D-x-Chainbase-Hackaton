@@ -17,11 +17,11 @@ const Searchbar = ({
 
   return (
     <div className="mb-4 w-full rounded-full border-none bg-white p-3 shadow-md">
-      <div className=" text-black flex items-center">
+      <div className=" flex items-center text-black">
         <i className="fas fa-search ml-1 px-3"></i>
         <input
           type="text"
-          placeholder="Search NFT (or ERC20 token?) by address..."
+          placeholder="Search NFT Collection by contract address..."
           className="ml-3 w-full focus:outline-none"
           value={searchInputValue}
           onChange={handleSearchInputValueChange}

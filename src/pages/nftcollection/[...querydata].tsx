@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import ChartBars from "@/components/ChartBarra";
@@ -15,21 +18,79 @@ export default function ColectionPage() {
 
   const { querydata } = router.query;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-  const [data, setData] = useState<any>(null);
+  const [metadataData, setMetadataData] = useState<any>(null);
+  const [floorPricesData, setFloorPricesData] = useState<any>(null);
 
   useEffect(() => {
     async function fetchData(address: string, id: string) {
-      const res = await fetch(`api/getcollectioninfo`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ address, chainId: id }),
+      const options = {
+        method: "GET",
+        headers: { accept: "application/json", "x-api-key": "demo" },
+      };
+
+      const rawNFTsOwnersFetchResponse: any = await fetch(
+        `https://api.chainbase.online/v1/nft/owners?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
+        options,
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
+
+      // const rawNFTCollectionFloorPriceFetchResponse = await fetch(
+      //   `https://api.chainbase.online/v1/nft/floor_price?chain_id=${id}&contract_address=${address}`,
+      //   options,
+      // )
+      //   .then((response) => response.json())
+      //   .catch((err) => console.error(err));
+
+      fetch(
+        "https://api.chainbase.online/v1/nft/collection/items?chain_id=1&contract_address=0xed5af388653567af2f388e6224dc7c4b3241c544&page=1&limit=20",
+        options,
+      )
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        .catch((err) => console.error(err));
+
+      const rawNFTCollectionItems = await fetch(
+        // `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
+        `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
+        options,
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
+
+      const rawNFTCollectionMetadataFetchResponse = await fetch(
+        `https://api.chainbase.online/v1/nft/collection?chain_id=${id}&contract_address=${address}`,
+        options,
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
+
+      if (rawNFTCollectionMetadataFetchResponse) {
+        const formattedMetadataData = {
+          banner_image_url:
+            rawNFTCollectionMetadataFetchResponse.data.banner_image_url,
+          name: rawNFTCollectionMetadataFetchResponse.data.name,
+          description: rawNFTCollectionMetadataFetchResponse.data.description,
+          symbol: rawNFTCollectionMetadataFetchResponse.data.symbol,
+          owner_address:
+            rawNFTCollectionMetadataFetchResponse.data.owner_address,
+        };
+        setMetadataData(formattedMetadataData);
+
+        const formattedFloorPriceData = {
+          floor_price: rawNFTCollectionMetadataFetchResponse.data.floor_prices,
+        };
+
+        setFloorPricesData(formattedFloorPriceData);
+      }
+
+      console.log({
+        rawNFTsOwnersFetchResponse,
+        // rawNFTCollectionFloorPriceFetchResponse,
+        rawNFTCollectionItems,
+        rawNFTCollectionMetadataFetchResponse,
       });
-      const data = await res.json();
-      setData(data);
     }
-    console.log({ querydata });
 
     if (querydata === undefined) return;
 
@@ -40,7 +101,6 @@ export default function ColectionPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [querydata]);
 
-  console.log({ data });
   return (
     <div>
       <Header2 />
