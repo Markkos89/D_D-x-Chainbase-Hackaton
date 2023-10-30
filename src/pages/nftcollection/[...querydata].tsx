@@ -20,12 +20,16 @@ export default function ColectionPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
   const [metadataData, setMetadataData] = useState<any>(null);
   const [floorPricesData, setFloorPricesData] = useState<any>(null);
+  const [collectionItemsData, setCollectionItemsData] = useState<any>(null);
 
   useEffect(() => {
     async function fetchData(address: string, id: string) {
       const options = {
         method: "GET",
-        headers: { accept: "application/json", "x-api-key": "demo" },
+        headers: {
+          accept: "application/json",
+          "x-api-key": "2XVK0Amlk4BiJwM9fng1QWjhMs5",
+        },
       };
 
       const rawNFTsOwnersFetchResponse: any = await fetch(
@@ -48,14 +52,6 @@ export default function ColectionPage() {
       )
         .then((response) => response.json())
         .then((response) => console.log(response))
-        .catch((err) => console.error(err));
-
-      const rawNFTCollectionItems = await fetch(
-        // `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
-        `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
-        options,
-      )
-        .then((response) => response.json())
         .catch((err) => console.error(err));
 
       const rawNFTCollectionMetadataFetchResponse = await fetch(
@@ -87,17 +83,38 @@ export default function ColectionPage() {
       console.log({
         rawNFTsOwnersFetchResponse,
         // rawNFTCollectionFloorPriceFetchResponse,
-        rawNFTCollectionItems,
         rawNFTCollectionMetadataFetchResponse,
       });
     }
-
+    async function fetchCollectionItems(address: string, id: string) {
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          "x-api-key": "2XVK0Amlk4BiJwM9fng1QWjhMs5",
+        },
+      };
+      const rawNFTCollectionItems = await fetch(
+        // `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
+        `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
+        options,
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
+      console.log({ rawNFTCollectionItems });
+      setCollectionItemsData(rawNFTCollectionItems);
+    }
     if (querydata === undefined) return;
 
     const [address, id] = querydata as string[];
     if (address && id) {
       fetchData(address, id);
+      const timer1sec = setTimeout(() => {
+        fetchCollectionItems(address, id);
+      }, 1300);
+      return () => clearTimeout(timer1sec);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [querydata]);
 
