@@ -67,7 +67,7 @@ export default function Home() {
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead className="bg-gray-50 bg-zinc-900">
+                  <thead className=" bg-zinc-900">
                     <tr>
                       <th
                         scope="col"
@@ -173,7 +173,7 @@ export default function Home() {
                               </button>
                             </td>
                             <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              <button className="cursor-pointer">
+                              <button className="cursor-pointer hover:underline">
                                 {`${nftData.collection?.name}`}
                               </button>
                             </td>
@@ -181,7 +181,7 @@ export default function Home() {
                               {`${nftData.collection?.symbol}`}
                             </td>
                             <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              <button className="cursor-pointer">
+                              <button className="cursor-pointer hover:underline">
                                 {`${nftData.collection?.owner}`}
                               </button>
                             </td>
