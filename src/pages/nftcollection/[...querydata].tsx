@@ -36,9 +36,10 @@ export default function ColectionPage() {
         headers: {
           accept: "application/json",
           "x-api-key": "2XVK0Amlk4BiJwM9fng1QWjhMs5",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "*", // replace this your actual origin
+          "Access-Control-Allow-Methods": "GET,DELETE,PATCH,POST,PUT",
+          "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
         },
       };
 
@@ -93,9 +94,11 @@ export default function ColectionPage() {
         headers: {
           accept: "application/json",
           "x-api-key": "2XVK0Amlk4BiJwM9fng1QWjhMs5",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "*", // replace this your actual origin
+          "Access-Control-Allow-Methods": "GET,DELETE,PATCH,POST,PUT",
+          "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+
         },
       };
       const rawNFTCollectionItems: INftCollectionItemsResponse = await fetch(
@@ -105,7 +108,10 @@ export default function ColectionPage() {
         .then((response) => response.json())
         .catch((err) => console.error(err));
 
-      setCollectionItemsData(rawNFTCollectionItems.data);
+      if (rawNFTCollectionItems) {
+        setCollectionItemsData(rawNFTCollectionItems.data);
+      }
+
     }
     if (querydata === undefined) return;
 
