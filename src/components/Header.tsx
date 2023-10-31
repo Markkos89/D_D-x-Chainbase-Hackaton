@@ -49,18 +49,30 @@ const Header = ({
         </div>
       </div>
       <div className="bg-primary flex-col pt-14">
-        <div className="mb-1 h-5 w-96 text-white">
+        <div className="mb-1 h-5 flex w-full justify-between text-white">
           {/* <a
             href="https://etherscan.io/name-lookup-search?id=devdao.eth"
             target="_blank"
           > */}
-          <h2 className="ml-4 text-2xl font-bold ">{name}</h2>
+          
+          <h2 className="mx-5  text-2xl font-bold ">{name}</h2>
+          <div className="flex flex-col mx-5 mb-8">
+              <p className="text-navy-700 text-2xl  font-bold dark:text-white">
+                {floor_prices.length > 0 ? `${floor_prices[0].value} ETH` : 'N/A'}
+              </p>
+
+              <p className="text-white-600 text-sm text-right font-normal">floor price</p>
+            </div>
+          
+        
+
           {/* </a> */}
         </div>
-        <div className="flex gap-8 px-5  pt-8">
-          <div className="flex  flex-row  ">
-            <div className="text-s content-evenly text-gray-400/80 hover:text-gray-400">
+        <div className="flex gap-8 mx-5  mt-8">
+          <div className="flex  flex-row  mb-4 ">
+            <div className="text-s content-evenly text-neutral-300 hover:text-gray-400">
               <p className="font-bold"> {description}</p>
+              
             </div>
           </div>
           <div className="flex flex-row">
@@ -79,20 +91,15 @@ const Header = ({
             </div> */}
           </div>
         </div>
-        <div className="bcode my-6 break-all px-5">
-          <div className="mb-3 mt-6 flex gap-14 md:!gap-14">
-            <div className="flex flex-col items-center justify-center">
+        {/*<div className="bcode my-6 break-all px-5">
+          <div className="mb-3 mt-6 flex justify-end gap-14 md:!gap-14">
+            {/*<div className="flex flex-col items-center justify-center">
               <p className="text-navy-700 text-2xl font-bold dark:text-white">
                 368 ETH
               </p>
               <p className="text-white-600 text-sm font-normal">total volume</p>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-              <p className="text-navy-700 text-2xl font-bold dark:text-white">
-                0,0171 ETH
-              </p>
-              <p className="text-white-600 text-sm font-normal">floor price</p>
-            </div>
+              </div>
+            
             <div className="flex flex-col items-center justify-center">
               <p className="text-navy-700 text-2xl font-bold dark:text-white">
                 0,0083 WETH
@@ -118,10 +125,12 @@ const Header = ({
               <p className="text-white-600 text-sm font-normal">
                 unique owners
               </p>
-            </div>
+            </div> 
           </div>
+        </div> */}
+        <div className="text-black">
+          <hr></hr>
         </div>
-        <hr></hr>
         <div className="h-30 mx-6  flex w-full items-center  ">
           <div className="mx-4 my-4 mb-4 flex   justify-center rounded-full border-2 border-gray-200 bg-gray-200 text-sm leading-none text-gray-500">
             <button

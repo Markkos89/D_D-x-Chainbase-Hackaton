@@ -1,6 +1,6 @@
 const Topbar = () => {
   return (
-    <nav className="relative flex w-full items-center justify-between bg-white px-5 py-6 dark:bg-slate-900">
+    <nav className="relative flex w-full items-center justify-between bg-zinc-950 px-5 py-6 ">
       <div>
         <svg
           width="41"
@@ -62,21 +62,13 @@ const Topbar = () => {
             />
           </svg>
         </div>
-        <li className="text-primary p-3 text-sm font-medium hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
+        
+        <li className="hover:text-primary cursor-pointer hover:underline  p-3 text-l font-medium text-gray-600 transition-colors hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
           <a href="#" className="dark:text-white">
-            Menu Option 1
+            Home
           </a>
         </li>
-        <li className="hover:text-primary cursor-pointer p-3 text-sm font-medium text-gray-600 transition-colors hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
-          <a href="#" className="dark:text-white">
-            Menu Option 2
-          </a>
-        </li>
-        <li className="hover:text-primary cursor-pointer p-3 text-sm font-medium text-gray-600 transition-colors hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
-          <a href="#" className="dark:text-white">
-            Menu Option 3
-          </a>
-        </li>
+        
       </ul>
       <div className="flex items-center gap-3">
         {/* <svg
