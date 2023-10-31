@@ -29,7 +29,7 @@ const Header = ({
   return (
     <div className="cointener-none mx-4 justify-items-stretch bg-zinc-950">
       <div className="w-full border-0 ">
-        <div className="h-72 w-full rounded-t-lg bg-black px-4 ">
+      <div className="h-72 w-full rounded-t-lg px-4" style={{ backgroundImage: `url(${banner_image_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
           <div className="pt-46  absolute p-56 text-2xl  font-bold text-white">
             {symbol}
           </div>
