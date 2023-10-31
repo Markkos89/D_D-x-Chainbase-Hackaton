@@ -1,86 +1,91 @@
 <h1>Chainbase Hackathon</h1>
-Este proyecto tiene como fin interactuar con la API DE CHAINBASE, nosotros elegimos la
- API WEEBHOCK: Ya que nuestro objetivo era crea una plataforma que monitoree en tiempo real la creacion y tranferencia de token y les de a los coleccionistas o poseedores una forma precisa de realizar el seguimiento y saber su cotizacion.
+This project aims to interact with the CHAINBASE API, we choose the
+ NFT API: Since our objective was to create a platform that shows information about a certain searched collection as well as the top trending collections on eth mainnet
 
-<h2> Introducción</h2>
-Esta documentación te guiará a realizar diferentes consultas hacia la API DE CHAINBASE.
+<h2>Introduction</h2>
+This documentation will guide you to run the project locally and make different queries to the CHAINBASE API.
 
 </br>
 
-- [Instalación:](#instalación)
-- [Dependencias:](#dependencias)
-- [Ejemplos de uso](#ejemplos-de-uso)
+- [Installation](#installation)
+- [Run](#run)
+- [Chainbase API Routes](#chainbase-api-routes)
+- [Examples of use](#examples-of-use)
+- [GET NFTs más populares](#get-nfts-más-populares)
+- [Deploy on Vercel](#deploy-on-vercel)
 
+### Installation
 
+Asumiendo que tiene node.js preinstalado, asegurese de que su terminal este
+posicionada en la carpeta raiz del proyecto y ejecute el siguiente comando para
+instalar todas las dependencias necesarias:
 
-### Instalación
-
-## Dependencias:
-Asumiendo que tiene node.js preinstalado, asegurese de que su terminal este posicionada en la carpeta raiz del proyecto y ejecute  el siguiente comando para instalar todas las dependencias necesarias:
 ```
 pnpm install
 ```
 
+### Run
+
 Ahora ya puedes comenzar a ejecutar el programa con el siguiente comando:
+
 ```
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Comienza a realizar peticiones desde Thunder Client, Postman, u otra alternativa
+Start making requests from Thunder Client, Postman, or another alternative
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the
+result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.tsx`. The page
+auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Chainbase API Routes
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-# Rutas de la API de Chainbase
+| METHOD | URL                                                     | DESCRIPTION                                                                                                                                      |
+| ------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| GET    | https://api.chainbase.online/v1/nft/collection/trending | Get the most popular NFTs. The parameters `chain_id`, `range`, `exchange_name`, `sort`, `page` and `limit` must be provided as query parameters. |
 
-|MÉTODO|URL|DESCRIPCION|
-|-|-|-|
-|GET|https://api.chainbase.online/v1/nft/collection/trending|Obtiene los NFTs más populares. Los parámetros `chain_id`, `range`, `exchange_name`, `sort`, `page` y `limit` deben ser proporcionados como parámetros de consulta.
+### Examples of use
 
-# Ejemplos de uso
-Todas las consultas GET retornarán un formato JSON.
+All GET queries will return a JSON format.
 
-## GET NFTs más populares
+### GET NFTs más populares
+
 La URL general para obtener los NFTs más populares.
+
 ```py
 https://api.chainbase.online/v1/nft/collection/trending?chain_id=1&range=7d&exchange_name=all&sort=volume_desc&page=1&limit=20
 ```
-Cuerpo de la solicitud:
+
+Request body:
+
 ```json
 {
-    "chain_id": "1",
-    "range": "7d",
-    "exchange_name": "all",
-    "sort": "volume_desc",
-    "page": "1",
-    "limit": "20"
+  "chain_id": "1",
+  "range": "7d",
+  "exchange_name": "all",
+  "sort": "volume_desc",
+  "page": "1",
+  "limit": "20"
 }
 ```
-Por favor, ten en cuenta que este es solo un ejemplo y puede que no refleje exactamente cómo funcionan las rutas GET en la API de Chainbase. Te recomendaría revisar la documentación oficial o ponerse en contacto con el equipo de desarrollo para obtener información precisa. ¡Espero que esto te ayude!.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Please note that this is just an example and may not exactly reflect how GET
+routes work in the Chainbase API. I would recommend you check the official
+documentation or contact the development team for accurate information. ¡I hope
+this helps!.
 
-## Learn More
+### Deploy on Vercel
 
-To learn more about Next.js, take a look at the following resources:
+The easiest way to deploy your Next.js app is to use the
+[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+from the creators of Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our
+[Next.js deployment documentation](https://nextjs.org/docs/deployment) for more
+details.

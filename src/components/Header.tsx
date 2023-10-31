@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import React from "react";
 import Image from "next/image";
+import type { FloorPrice } from "@/interfaces/INftCollectionMetadataData";
 
 type HeaderProps =
   | {
@@ -11,6 +12,7 @@ type HeaderProps =
       description: string;
       symbol: string;
       owner_address: string;
+      floor_prices: FloorPrice[];
     }
   | any;
 
@@ -20,7 +22,9 @@ export const Header = ({
   description,
   symbol,
   owner_address,
+  floor_prices,
 }: HeaderProps) => {
+  console.log({ floor_prices });
   return (
     <div className="cointener-none mx-4 justify-items-stretch bg-zinc-950">
       <div className="w-full border-0 ">

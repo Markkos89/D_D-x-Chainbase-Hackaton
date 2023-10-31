@@ -10,7 +10,11 @@ import Header from "@/components/Header";
 import NftCard from "@/components/NftCards";
 import TopHistory from "@/components/TopHistory";
 import TransactionTable from "@/components/TransactionTable";
-import type { INftCollectionMetadataData } from "@/interfaces/INftCollectionMetadataData";
+import type { INftCollectionItemsResponse } from "@/interfaces/INftCollectionItemsDataResponse";
+import type {
+  INftCollectionMetadataData,
+  INftCollectionMetadataResponse,
+} from "@/interfaces/INftCollectionMetadataData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -25,9 +29,11 @@ export default function ColectionPage() {
     description: "",
     symbol: "",
     owner_address: "",
-    floor_price: [],
+    floor_prices: [],
   });
-  const [collectionItemsData, setCollectionItemsData] = useState<any>(null);
+  const [collectionItemsData, setCollectionItemsData] = useState<
+    INftCollectionItemsResponse["data"]
+  >([]);
 
   useEffect(() => {
     async function fetchData(address: string, id: string) {
@@ -36,6 +42,9 @@ export default function ColectionPage() {
         headers: {
           accept: "application/json",
           "x-api-key": "2XVK0Amlk4BiJwM9fng1QWjhMs5",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
         },
       };
 
@@ -61,12 +70,13 @@ export default function ColectionPage() {
         .then((response) => console.log(response))
         .catch((err) => console.error(err));
 
-      const rawNFTCollectionMetadataFetchResponse = await fetch(
-        `https://api.chainbase.online/v1/nft/collection?chain_id=${id}&contract_address=${address}`,
-        options,
-      )
-        .then((response) => response.json())
-        .catch((err) => console.error(err));
+      const rawNFTCollectionMetadataFetchResponse: INftCollectionMetadataResponse =
+        await fetch(
+          `https://api.chainbase.online/v1/nft/collection?chain_id=${id}&contract_address=${address}`,
+          options,
+        )
+          .then((response) => response.json())
+          .catch((err) => console.error(err));
 
       if (rawNFTCollectionMetadataFetchResponse) {
         const formattedMetadataData = {
@@ -75,9 +85,8 @@ export default function ColectionPage() {
           name: rawNFTCollectionMetadataFetchResponse.data.name,
           description: rawNFTCollectionMetadataFetchResponse.data.description,
           symbol: rawNFTCollectionMetadataFetchResponse.data.symbol,
-          owner_address:
-            rawNFTCollectionMetadataFetchResponse.data.owner_address,
-          floor_price: rawNFTCollectionMetadataFetchResponse.data.floor_prices,
+          owner_address: rawNFTCollectionMetadataFetchResponse.data.owner,
+          floor_prices: rawNFTCollectionMetadataFetchResponse.data.floor_prices,
         };
         setMetadataData(formattedMetadataData);
       }
@@ -89,17 +98,19 @@ export default function ColectionPage() {
         headers: {
           accept: "application/json",
           "x-api-key": "2XVK0Amlk4BiJwM9fng1QWjhMs5",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
         },
       };
-      const rawNFTCollectionItems = await fetch(
-        // `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
+      const rawNFTCollectionItems: INftCollectionItemsResponse = await fetch(
         `https://api.chainbase.online/v1/nft/collection/items?chain_id=${id}&contract_address=${address}&page=1&limit=20`,
         options,
       )
         .then((response) => response.json())
         .catch((err) => console.error(err));
 
-      setCollectionItemsData(rawNFTCollectionItems);
+      setCollectionItemsData(rawNFTCollectionItems.data);
     }
     if (querydata === undefined) return;
 
