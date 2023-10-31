@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents */
@@ -5,24 +6,24 @@ import React from "react";
 import Image from "next/image";
 import type { FloorPrice } from "@/interfaces/INftCollectionMetadataData";
 
-type HeaderProps =
-  | {
-      banner_image_url: string;
-      name: string;
-      description: string;
-      symbol: string;
-      owner_address: string;
-      floor_prices: FloorPrice[];
-    }
-  | any;
+type HeaderProps = {
+  banner_image_url: string;
+  name: string;
+  description: string;
+  symbol: string;
+  owner_address: string;
+  floor_prices: FloorPrice[];
+  image_url: string;
+};
 
-export const Header = ({
+const Header = ({
   banner_image_url,
   name,
   description,
   symbol,
   owner_address,
   floor_prices,
+  image_url,
 }: HeaderProps) => {
   console.log({ floor_prices });
   return (
@@ -30,17 +31,17 @@ export const Header = ({
       <div className="w-full border-0 ">
         <div className="h-72 w-full rounded-t-lg bg-black px-4 ">
           <div className="pt-46  absolute p-56 text-2xl  font-bold text-white">
-            {symbol} - {name}
+            {symbol}
           </div>
         </div>
         <div className="absolute left-4 -mt-32 ml-5 box-border rounded-xl border-4 border-zinc-950">
-          {banner_image_url ? (
+          {image_url ? (
             <Image
-              src={banner_image_url}
+              src={image_url}
               alt="NFT Collection Banner"
               width={150}
               border-width={2}
-              height={10}
+              height={150}
               border-radius={0.5}
               className="rounded-md"
             />
@@ -53,13 +54,13 @@ export const Header = ({
             href="https://etherscan.io/name-lookup-search?id=devdao.eth"
             target="_blank"
           > */}
-          <h2 className="ml-4 text-2xl font-bold ">{description}</h2>
+          <h2 className="ml-4 text-2xl font-bold ">{name}</h2>
           {/* </a> */}
         </div>
         <div className="flex gap-8 px-5  pt-8">
           <div className="flex  flex-row  ">
             <div className="text-s content-evenly text-gray-400/80 hover:text-gray-400">
-              <p className="font-bold"> · {owner_address}</p>
+              <p className="font-bold"> {description}</p>
             </div>
           </div>
           <div className="flex flex-row">

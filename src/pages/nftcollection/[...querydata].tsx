@@ -23,14 +23,8 @@ export default function ColectionPage() {
 
   const { querydata } = router.query;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-  const [metadataData, setMetadataData] = useState<INftCollectionMetadataData>({
-    banner_image_url: "",
-    name: "",
-    description: "",
-    symbol: "",
-    owner_address: "",
-    floor_prices: [],
-  });
+  const [metadataData, setMetadataData] =
+    useState<INftCollectionMetadataData | null>(null);
   const [collectionItemsData, setCollectionItemsData] = useState<
     INftCollectionItemsResponse["data"]
   >([]);
@@ -87,6 +81,7 @@ export default function ColectionPage() {
           symbol: rawNFTCollectionMetadataFetchResponse.data.symbol,
           owner_address: rawNFTCollectionMetadataFetchResponse.data.owner,
           floor_prices: rawNFTCollectionMetadataFetchResponse.data.floor_prices,
+          image_url: rawNFTCollectionMetadataFetchResponse.data.image_url,
         };
         setMetadataData(formattedMetadataData);
       }
@@ -128,7 +123,7 @@ export default function ColectionPage() {
 
   return (
     <div>
-      <Header data={metadataData} />
+      {metadataData !== null ? <Header {...metadataData} /> : null}
       <div className="cointener-none mx-4 flex bg-zinc-950 ">
         <div className="mx-10 w-1/2 justify-end">
           <div className="flex gap-4">

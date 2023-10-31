@@ -5,6 +5,7 @@ export interface INftCollectionMetadataData {
   symbol: string;
   owner_address: string;
   floor_prices: FloorPrice[];
+  image_url: string;
 }
 
 // To parse this data:
