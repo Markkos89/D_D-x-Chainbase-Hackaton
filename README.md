@@ -1,18 +1,25 @@
-<h1>Chainbase Hackathon</h1>
-This project aims to interact with the CHAINBASE API, we choose the
- NFT API: Since our objective was to create a platform that shows information about a certain searched collection as well as the top trending collections on eth mainnet
+# D_D x Chainbase Hackathon
 
-<h2>Introduction</h2>
-This documentation will guide you to run the project locally and make different queries to the CHAINBASE API.
+##### October 2023
 
-</br>
+This project aims to interact with the CHAINBASE API, we choose the NFT API:
+Since our objective was to create a platform that shows information about a
+certain searched collection as well as the top trending collections on eth
+mainnet
 
-- [Installation](#installation)
-- [Run](#run)
-- [Chainbase API Routes](#chainbase-api-routes)
-- [Examples of use](#examples-of-use)
-- [GET NFTs más populares](#get-nfts-más-populares)
-- [Deploy on Vercel](#deploy-on-vercel)
+## Introduction
+
+This documentation will guide you to run the project locally and make different
+queries to the CHAINBASE API.
+
+- [D_D x Chainbase Hackathon](#d_d-x-chainbase-hackathon) -
+  [October 2023](#october-2023)
+  - [Installation](#installation)
+  - [Run](#run)
+  - [Chainbase API Routes](#chainbase-api-routes)
+  - [Examples of use](#examples-of-use)
+  - [GET top trending NFTs](#get-top-trending-nfts)
+  - [Deploy on Vercel](#deploy-on-vercel)
 
 ### Installation
 
@@ -54,13 +61,11 @@ auto-updates as you edit the file.
 
 All GET queries will return a JSON format.
 
-### GET NFTs más populares
+### GET top trending NFTs
 
-La URL general para obtener los NFTs más populares.
+URL route to get top trending NFTs collections:
 
-```py
-https://api.chainbase.online/v1/nft/collection/trending?chain_id=1&range=7d&exchange_name=all&sort=volume_desc&page=1&limit=20
-```
+`https://api.chainbase.online/v1/nft/collection/trending?chain_id=1&range=7d&exchange_name=all&sort=volume_desc&page=1&limit=20`
 
 Request body:
 
