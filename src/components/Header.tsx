@@ -29,7 +29,14 @@ const Header = ({
   return (
     <div className="cointener-none mx-4 justify-items-stretch bg-zinc-950">
       <div className="w-full border-0 ">
-      <div className="h-72 w-full rounded-t-lg px-4" style={{ backgroundImage: `url(${banner_image_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+        <div
+          className="h-72 w-full rounded-t-lg px-4"
+          style={{
+            backgroundImage: `url(${banner_image_url})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <div className="pt-46  absolute p-56 text-2xl  font-bold text-white">
             {symbol}
           </div>
@@ -49,30 +56,29 @@ const Header = ({
         </div>
       </div>
       <div className="bg-primary flex-col pt-14">
-        <div className="mb-1 h-5 flex w-full justify-between text-white">
+        <div className="mb-1 flex h-5 w-full justify-between text-white">
           {/* <a
             href="https://etherscan.io/name-lookup-search?id=devdao.eth"
             target="_blank"
           > */}
-          
-          <h2 className="mx-5  text-2xl font-bold ">{name}</h2>
-          <div className="flex flex-col mx-5 mb-8">
-              <p className="text-navy-700 text-2xl  font-bold dark:text-white">
-                {floor_prices.length > 0 ? `${floor_prices[0].value} ETH` : 'N/A'}
-              </p>
 
-              <p className="text-white-600 text-sm text-right font-normal">floor price</p>
-            </div>
-          
-        
+          <h2 className="mx-5  text-2xl font-bold ">{name}</h2>
+          <div className="mx-5 mb-8 flex flex-col">
+            <p className="text-navy-700 text-2xl  font-bold dark:text-white">
+              {floor_prices.length > 0 ? `${floor_prices[0].value} ETH` : "N/A"}
+            </p>
+
+            <p className="text-white-600 text-right text-sm font-normal">
+              floor price
+            </p>
+          </div>
 
           {/* </a> */}
         </div>
-        <div className="flex gap-8 mx-5  mt-8">
-          <div className="flex  flex-row  mb-4 ">
+        <div className="mx-5 mt-8 flex  gap-8">
+          <div className="mb-4  flex  flex-row ">
             <div className="text-s content-evenly text-neutral-300 hover:text-gray-400">
               <p className="font-bold"> {description}</p>
-              
             </div>
           </div>
           <div className="flex flex-row">

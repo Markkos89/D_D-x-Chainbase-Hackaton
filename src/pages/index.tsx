@@ -139,7 +139,7 @@ export default function Home() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200  dark:divide-gray-700 bg-zinc-950">
+                  <tbody className="divide-y divide-gray-200  bg-zinc-950 dark:divide-gray-700">
                     {topTrendingNFTs !== undefined &&
                     topTrendingNFTs?.data &&
                     topTrendingNFTs.data?.length > 0
@@ -239,7 +239,7 @@ export default function Home() {
           <div className="hidden items-center gap-x-3 md:flex">
             <a
               href="#"
-              className="rounded-md bg-blue-100/60 px-2 py-1 text-sm text-blue-500 bg-zinc-950"
+              className="rounded-md bg-blue-100/60 bg-zinc-950 px-2 py-1 text-sm text-blue-500"
             >
               1
             </a>
@@ -283,7 +283,7 @@ export default function Home() {
 
           <a
             href="#"
-            className="flex items-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize text-gray-80 transition-colors duration-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+            className="text-gray-80 flex items-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize transition-colors duration-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
             <span>Next</span>
 

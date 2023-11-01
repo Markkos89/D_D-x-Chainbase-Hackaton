@@ -1,37 +1,31 @@
-import Link from 'next/link'
-import Image from 'next/image';
-
+import Link from "next/link";
+import Image from "next/image";
 
 const Topbar = () => {
   return (
     <nav className="relative flex w-full items-center justify-between bg-zinc-950 px-5 py-6  ">
-      <div className='absolute z-10 mx-2 mt-8'>
-      <Link href="/" className="dark:text-white">
-     < Image
-    src="/bichiLogo.png"
-    alt="Logo NFT DATA TRACKER"
-    width={120}
-    height={120}
-    
-  />
-  <h2 className='font-bold '>NFT DATA TRACKER</h2>
-          </Link>
- 
-</div>
-<div className='flex justify-between w-50'></div>
+      <div className="absolute z-10 mx-2 mt-8">
+        <Link href="/" className="dark:text-white">
+          <Image
+            src="/bichiLogo.png"
+            alt="Logo NFT DATA TRACKER"
+            width={120}
+            height={120}
+          />
+          <h2 className="font-bold ">NFT DATA TRACKER</h2>
+        </Link>
+      </div>
+      <div className="w-50 flex justify-between"></div>
       <ul
         id="drawer"
         role="menu"
         className="transition-left ease-[cubic-bezier(0.4, 0.0, 0.2, 1)] absolute -left-48  top-0  flex min-h-screen w-48 cursor-pointer flex-col bg-white shadow-xl delay-150 dark:bg-slate-900 sm:static sm:flex sm:min-h-0 sm:w-auto sm:flex-row sm:gap-3 sm:bg-transparent sm:shadow-none  "
       >
-     
-
-        <li className="justify-betweend hover:text-primary cursor-pointer hover:underline  p-3 text-l font-medium text-gray-600 transition-colors hover:bg-slate-300 dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
+        <li className="justify-betweend hover:text-primary text-l cursor-pointer  p-3 font-medium text-gray-600 transition-colors hover:bg-slate-300 hover:underline dark:hover:bg-slate-800 sm:p-0 sm:hover:bg-transparent">
           <Link href="/" className="dark:text-white">
             Home
           </Link>
         </li>
-
       </ul>
       <div className="flex items-center gap-3">
         {/* <svg
