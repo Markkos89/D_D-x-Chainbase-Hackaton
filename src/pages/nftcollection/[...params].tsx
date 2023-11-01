@@ -234,13 +234,13 @@ export default function ColectionPage(
             <NftCard />
           </div>
         </div>
-        <div className="flex w-1/2 flex-col ">
+        <div className="flex flex-col md:w-1/2 ">
           <TopHistory />
           <TransactionTable />
           <div className="flex justify-center ">
             <ChartLineal />
           </div>
-          <div className="flex justify-center ">
+          <div className="flex justify-center">
             <ChartBars />
           </div>
         </div>
