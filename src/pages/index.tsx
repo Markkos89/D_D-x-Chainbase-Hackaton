@@ -67,7 +67,7 @@ export default function Home() {
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead className="bg-gray-50 dark:bg-gray-800">
+                  <thead className=" bg-zinc-900">
                     <tr>
                       <th
                         scope="col"
@@ -139,7 +139,7 @@ export default function Home() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
+                  <tbody className="divide-y divide-gray-200  bg-zinc-950 dark:divide-gray-700">
                     {topTrendingNFTs !== undefined &&
                     topTrendingNFTs?.data &&
                     topTrendingNFTs.data?.length > 0
@@ -173,7 +173,7 @@ export default function Home() {
                               </button>
                             </td>
                             <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              <button className="cursor-pointer">
+                              <button className="cursor-pointer hover:underline">
                                 {`${nftData.collection?.name}`}
                               </button>
                             </td>
@@ -181,7 +181,7 @@ export default function Home() {
                               {`${nftData.collection?.symbol}`}
                             </td>
                             <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                              <button className="cursor-pointer">
+                              <button className="cursor-pointer hover:underline">
                                 {`${nftData.collection?.owner}`}
                               </button>
                             </td>
@@ -239,7 +239,7 @@ export default function Home() {
           <div className="hidden items-center gap-x-3 md:flex">
             <a
               href="#"
-              className="rounded-md bg-blue-100/60 px-2 py-1 text-sm text-blue-500 dark:bg-gray-800"
+              className="rounded-md bg-blue-100/60 bg-zinc-950 px-2 py-1 text-sm text-blue-500"
             >
               1
             </a>
@@ -283,7 +283,7 @@ export default function Home() {
 
           <a
             href="#"
-            className="flex items-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize text-gray-700 transition-colors duration-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+            className="text-gray-80 flex items-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize transition-colors duration-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
             <span>Next</span>
 
