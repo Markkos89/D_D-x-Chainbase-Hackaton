@@ -10,8 +10,8 @@ const Topbar = () => {
      < Image
     src="/bichiLogo.png"
     alt="Logo NFT DATA TRACKER"
-    width={120}
-    height={120}
+    width={100}
+    height={100}
     
   />
   <h2 className='font-bold '>NFT DATA TRACKER</h2>
